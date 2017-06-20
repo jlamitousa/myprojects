@@ -10,4 +10,11 @@ public class BankTest {
 		Bank b = new Bank();
 		Assert.assertEquals(0, b.getNumberOfUser());
 	}
+	
+	@Test
+	public void getAfterAddNumberOfUser() {
+		Bank b = new Bank();
+		b.addUser();
+		Assert.assertEquals(1, b.getNumberOfUser());
+	}
 }
