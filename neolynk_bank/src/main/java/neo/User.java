@@ -2,21 +2,27 @@ package neo;
 
 public class User {
 
-	private String username;
+	private String userName;
+	private String userLastName;
 	
-	public User(String username) {
-		this.username = username;
+	public User(String userName, String userLastName) {
+		this.userName = userName;
+		this.userLastName = userLastName;
 	}
 	
-	public String getUsername() {
-		return this.username;
+	public String getUserName() {
+		return this.userName;
 	}
 	
-	public void setUsername(String newUsername) {
-		this.username = newUsername;
+	public void setUserName(String newUserName) {
+		this.userName = newUserName;
 	}
 
-	public String getUserLastname() {
-		return "Amitousa";
+	public String getUserLastName() {
+		return this.userLastName;
+	}
+
+	public void setUserLastname(String newUserLastname) {
+		this.userLastName = newUserLastname;
 	}
 }

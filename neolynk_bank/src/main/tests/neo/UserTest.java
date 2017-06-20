@@ -11,22 +11,28 @@ public class UserTest {
 	
 	@Before
 	public void init() {
-		this.u = new User("Jean-Luc");
+		this.u = new User("Jean-Luc", "Amitousa");
 	}
 	
 	@Test
 	public void createUserJeanLuc() {
-		Assert.assertThat(u.getUsername(), IsEqual.equalTo("Jean-Luc"));
+		Assert.assertThat(u.getUserName(), IsEqual.equalTo("Jean-Luc"));
 	}
 	
 	@Test
 	public void renameUserToJeanMarc() {
-		u.setUsername("Jean-Mark");
-		Assert.assertThat(u.getUsername(), IsEqual.equalTo("Jean-Mark"));
+		u.setUserName("Jean-Mark");
+		Assert.assertThat(u.getUserName(), IsEqual.equalTo("Jean-Mark"));
 	}
 	
 	@Test
 	public void createUserWithLastnameJeanLuc() {
-		Assert.assertThat(u.getUserLastname(), IsEqual.equalTo("Amitousa"));
+		Assert.assertThat(u.getUserLastName(), IsEqual.equalTo("Amitousa"));
+	}
+	
+	@Test
+	public void changeLastnameToMojito() {
+		u.setUserLastname("Mojito");
+		Assert.assertThat(u.getUserLastName(), IsEqual.equalTo("Mojito"));
 	}
 }
