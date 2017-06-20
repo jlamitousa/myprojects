@@ -1,5 +1,7 @@
 package neo;
 
+import org.apache.commons.lang3.StringUtils;
+
 
 public class User {
 
@@ -11,8 +13,8 @@ public class User {
 	
 	public User(String userName, String userLastName, int userAge, String adresseDescription, String phone) throws NeoLynkBankException {
 		
-		if(userName==null) {
-			throw new NeoLynkBankException("Invalid username (null)");
+		if(StringUtils.isEmpty(userName)) {
+			throw new NeoLynkBankException("Invalid username (null or empty)");
 		}
 		
 		this.name = userName;

@@ -105,4 +105,9 @@ public class UserTest {
 	public void cannotInitializeNameNull() throws NeoLynkBankException {
 		User u = new User(null, "", -1, "", "");
 	}
+	
+	@Test(expected=NeoLynkBankException.class)
+	public void cannotInitializeNameEmpty() throws NeoLynkBankException {
+		User u = new User("", "", -1, "", "");
+	}
 }
