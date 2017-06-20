@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class BankTest {
 
-	Bank b;
+	private Bank b;
 
 	@Before
 	public void init() {
