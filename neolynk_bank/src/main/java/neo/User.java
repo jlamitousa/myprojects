@@ -2,31 +2,37 @@ package neo;
 
 public class User {
 
-	private String userName;
-	private String userLastName;
+	private String name;
+	private String lastName;
+	private int age;
 	
-	public User(String userName, String userLastName) {
-		this.userName = userName;
-		this.userLastName = userLastName;
+	public User(String userName, String userLastName, int userAge) {
+		this.name = userName;
+		this.lastName = userLastName;
+		this.age = userAge;
 	}
 	
-	public String getUserName() {
-		return this.userName;
+	public String getName() {
+		return this.name;
 	}
 	
-	public void setUserName(String newUserName) {
-		this.userName = newUserName;
+	public void setName(String newUserName) {
+		this.name = newUserName;
 	}
 
-	public String getUserLastName() {
-		return this.userLastName;
+	public String getLastName() {
+		return this.lastName;
 	}
 
 	public void setUserLastname(String newUserLastname) {
-		this.userLastName = newUserLastname;
+		this.lastName = newUserLastname;
 	}
 
-	public int getUserAge() {
-		return 10;
+	public int getAge() {
+		return this.age;
+	}
+
+	public void setUserAge(int newUserAge) {
+		this.age = newUserAge;
 	}
 }

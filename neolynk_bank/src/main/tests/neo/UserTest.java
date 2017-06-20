@@ -11,33 +11,39 @@ public class UserTest {
 	
 	@Before
 	public void init() {
-		this.u = new User("Jean-Luc", "Amitousa");
+		this.u = new User("Jean-Luc", "Amitousa", 10);
 	}
 	
 	@Test
 	public void checkUserNameJeanLuc() {
-		Assert.assertThat(u.getUserName(), IsEqual.equalTo("Jean-Luc"));
+		Assert.assertThat(u.getName(), IsEqual.equalTo("Jean-Luc"));
 	}
 	
 	@Test
 	public void renameUserToJeanMarc() {
-		u.setUserName("Jean-Mark");
-		Assert.assertThat(u.getUserName(), IsEqual.equalTo("Jean-Mark"));
+		u.setName("Jean-Mark");
+		Assert.assertThat(u.getName(), IsEqual.equalTo("Jean-Mark"));
 	}
 	
 	@Test
 	public void checkUserLastnameJeanLuc() {
-		Assert.assertThat(u.getUserLastName(), IsEqual.equalTo("Amitousa"));
+		Assert.assertThat(u.getLastName(), IsEqual.equalTo("Amitousa"));
 	}
 	
 	@Test
 	public void changeLastnameToMojito() {
 		u.setUserLastname("Mojito");
-		Assert.assertThat(u.getUserLastName(), IsEqual.equalTo("Mojito"));
+		Assert.assertThat(u.getLastName(), IsEqual.equalTo("Mojito"));
 	}
 	
 	@Test
 	public void checkUserAge10() {
-		Assert.assertThat(u.getUserAge(), IsEqual.equalTo(10));
+		Assert.assertThat(u.getAge(), IsEqual.equalTo(10));
+	}
+	
+	@Test
+	public void changeAgeTo12() {
+		u.setUserAge(12);
+		Assert.assertThat(u.getAge(), IsEqual.equalTo(12));
 	}
 }
