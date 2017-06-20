@@ -15,4 +15,8 @@ public class User {
 	public void setUsername(String newUsername) {
 		this.username = newUsername;
 	}
+
+	public String getUserLastname() {
+		return "Amitousa";
+	}
 }

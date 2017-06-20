@@ -24,4 +24,9 @@ public class UserTest {
 		u.setUsername("Jean-Mark");
 		Assert.assertThat(u.getUsername(), IsEqual.equalTo("Jean-Mark"));
 	}
+	
+	@Test
+	public void createUserWithLastnameJeanLuc() {
+		Assert.assertThat(u.getUserLastname(), IsEqual.equalTo("Amitousa"));
+	}
 }
