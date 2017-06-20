@@ -1,5 +1,6 @@
 package neo;
 
+
 public class User {
 
 	private String name;
@@ -8,7 +9,12 @@ public class User {
 	private String adresseDescription;
 	private String phone;
 	
-	public User(String userName, String userLastName, int userAge, String adresseDescription, String phone) {
+	public User(String userName, String userLastName, int userAge, String adresseDescription, String phone) throws NeoLynkBankException {
+		
+		if(userName==null) {
+			throw new NeoLynkBankException("Invalid username (null)");
+		}
+		
 		this.name = userName;
 		this.lastName = userLastName;
 		this.age = userAge;

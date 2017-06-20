@@ -10,7 +10,7 @@ public class UserTest {
 	private User u;
 	
 	@Before
-	public void init() {
+	public void init() throws NeoLynkBankException {
 		this.u = new User("Jean-Luc", "Amitousa", 10, "9, allée des rosiers 92230 Genneviliers, France", "0605040302");
 	}
 	
@@ -100,5 +100,9 @@ public class UserTest {
 	/* ******************* *
 	 *  TESTS AUX LIMITES  *
 	 * ******************* */
-	//TODO
+	
+	@Test(expected=NeoLynkBankException.class)
+	public void cannotInitializeNameNull() throws NeoLynkBankException {
+		User u = new User(null, "", -1, "", "");
+	}
 }
