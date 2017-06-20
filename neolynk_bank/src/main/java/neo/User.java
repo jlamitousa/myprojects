@@ -45,4 +45,8 @@ public class User {
 	public void setUserAdresseDescription(String adresseDescription) {
 		this.adresseDescription = adresseDescription;
 	}
+
+	public String getPhone() {
+		return "0605040302";
+	}
 }

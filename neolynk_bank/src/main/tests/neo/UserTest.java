@@ -78,6 +78,11 @@ public class UserTest {
 		Assert.assertThat(u.getAdresseDescription(), IsEqual.equalTo(description));
 	}
 	
+	@Test
+	public void checkPhone0605040302() {
+		Assert.assertThat(u.getPhone(), IsEqual.equalTo("0605040302"));
+	}
+	
 	
 	
 	
