@@ -5,11 +5,13 @@ public class User {
 	private String name;
 	private String lastName;
 	private int age;
+	private String adresseDescription;
 	
-	public User(String userName, String userLastName, int userAge) {
+	public User(String userName, String userLastName, int userAge, String adresseDescription) {
 		this.name = userName;
 		this.lastName = userLastName;
 		this.age = userAge;
+		this.adresseDescription = adresseDescription;
 	}
 	
 	public String getName() {
@@ -37,6 +39,10 @@ public class User {
 	}
 
 	public Object getAdresseDescription() {
-		return "9, allée des rosiers 92230 Genneviliers, France";
+		return this.adresseDescription;
+	}
+
+	public void setUserAdresseDescription(String adresseDescription) {
+		this.adresseDescription = adresseDescription;
 	}
 }
