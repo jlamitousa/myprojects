@@ -7,9 +7,4 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({BankTest.class, UserTest.class})
 public class AllTests { 
-	
-	public void createUserJeanLuc() {
-		
-	}
-	
 }
