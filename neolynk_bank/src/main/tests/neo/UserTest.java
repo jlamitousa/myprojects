@@ -15,7 +15,7 @@ public class UserTest {
 	}
 	
 	@Test
-	public void createUserJeanLuc() {
+	public void checkUserNameJeanLuc() {
 		Assert.assertThat(u.getUserName(), IsEqual.equalTo("Jean-Luc"));
 	}
 	
@@ -26,7 +26,7 @@ public class UserTest {
 	}
 	
 	@Test
-	public void createUserWithLastnameJeanLuc() {
+	public void checkUserLastnameJeanLuc() {
 		Assert.assertThat(u.getUserLastName(), IsEqual.equalTo("Amitousa"));
 	}
 	
@@ -34,5 +34,10 @@ public class UserTest {
 	public void changeLastnameToMojito() {
 		u.setUserLastname("Mojito");
 		Assert.assertThat(u.getUserLastName(), IsEqual.equalTo("Mojito"));
+	}
+	
+	@Test
+	public void checkUserAge10() {
+		Assert.assertThat(u.getUserAge(), IsEqual.equalTo(10));
 	}
 }

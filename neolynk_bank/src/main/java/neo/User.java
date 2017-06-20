@@ -25,4 +25,8 @@ public class User {
 	public void setUserLastname(String newUserLastname) {
 		this.userLastName = newUserLastname;
 	}
+
+	public int getUserAge() {
+		return 10;
+	}
 }
