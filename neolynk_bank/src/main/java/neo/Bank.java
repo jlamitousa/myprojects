@@ -15,4 +15,8 @@ public class Bank {
 	public void addUser() {
 		this.nbOfUser++;
 	}
+	
+	public void deleteUser() {
+		this.nbOfUser--;
+	}
 }
