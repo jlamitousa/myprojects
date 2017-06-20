@@ -35,4 +35,8 @@ public class User {
 	public void setUserAge(int newUserAge) {
 		this.age = newUserAge;
 	}
+
+	public Object getAdresseDescription() {
+		return "9, allée des rosiers 92230 Genneviliers, France";
+	}
 }

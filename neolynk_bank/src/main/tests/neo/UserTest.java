@@ -46,4 +46,9 @@ public class UserTest {
 		u.setUserAge(12);
 		Assert.assertThat(u.getAge(), IsEqual.equalTo(12));
 	}
+	
+	@Test
+	public void checkUserAdress9AlleeDesRosiers() {
+		Assert.assertThat(u.getAdresseDescription(), IsEqual.equalTo("9, allée des rosiers 92230 Genneviliers, France"));
+	}
 }
