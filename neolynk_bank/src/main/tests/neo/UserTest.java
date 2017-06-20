@@ -29,8 +29,11 @@ public class UserTest {
 	
 	@Test
 	public void renameUserToJeanMarc() {
-		u.setName("Jean-Mark");
-		Assert.assertThat(u.getName(), IsEqual.equalTo("Jean-Mark"));
+		
+		String name = "Jean-Mark";
+		
+		u.setName(name);
+		Assert.assertThat(u.getName(), IsEqual.equalTo(name));
 	}
 	
 	@Test
@@ -40,8 +43,11 @@ public class UserTest {
 	
 	@Test
 	public void changeLastnameToMojito() {
-		u.setUserLastname("Mojito");
-		Assert.assertThat(u.getLastName(), IsEqual.equalTo("Mojito"));
+		
+		String lastName = "Mojito";
+		
+		u.setUserLastname(lastName);
+		Assert.assertThat(u.getLastName(), IsEqual.equalTo(lastName));
 	}
 	
 	@Test
@@ -51,8 +57,11 @@ public class UserTest {
 	
 	@Test
 	public void changeAgeTo12() {
-		u.setUserAge(12);
-		Assert.assertThat(u.getAge(), IsEqual.equalTo(12));
+		
+		int age = 12;
+		
+		u.setUserAge(age);
+		Assert.assertThat(u.getAge(), IsEqual.equalTo(age));
 	}
 	
 	@Test
