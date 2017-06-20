@@ -6,12 +6,14 @@ public class User {
 	private String lastName;
 	private int age;
 	private String adresseDescription;
+	private String phone;
 	
-	public User(String userName, String userLastName, int userAge, String adresseDescription) {
+	public User(String userName, String userLastName, int userAge, String adresseDescription, String phone) {
 		this.name = userName;
 		this.lastName = userLastName;
 		this.age = userAge;
 		this.adresseDescription = adresseDescription;
+		this.phone = phone;
 	}
 	
 	public String getName() {
@@ -47,6 +49,10 @@ public class User {
 	}
 
 	public String getPhone() {
-		return "0605040302";
+		return this.phone;
+	}
+
+	public void sePhone(String phone) {
+		this.phone = phone;
 	}
 }

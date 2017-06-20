@@ -11,7 +11,7 @@ public class UserTest {
 	
 	@Before
 	public void init() {
-		this.u = new User("Jean-Luc", "Amitousa", 10, "9, allée des rosiers 92230 Genneviliers, France");
+		this.u = new User("Jean-Luc", "Amitousa", 10, "9, allée des rosiers 92230 Genneviliers, France", "0605040302");
 	}
 	
 	
@@ -81,6 +81,15 @@ public class UserTest {
 	@Test
 	public void checkPhone0605040302() {
 		Assert.assertThat(u.getPhone(), IsEqual.equalTo("0605040302"));
+	}
+	
+	@Test
+	public void changePhoneTo0102030405() {
+		
+		String phone = "0102030405";
+		
+		u.sePhone(phone);
+		Assert.assertThat(u.getPhone(), IsEqual.equalTo(phone));
 	}
 	
 	
