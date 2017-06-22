@@ -21,5 +21,9 @@ public class Account {
 		}
 		
 		this.creationDate = newDate;
+	}
+
+	public int getBalance() {
+		return 0;
 	}	
 }

@@ -49,6 +49,11 @@ public class AcccountTest {
 		Assert.assertEquals(newDateStr, accountCreationDate);
 	}
 	
+	@Test
+	public void checkNewAccountBalance() {
+		Assert.assertEquals(0, a.getBalance());
+	}
+	
 	
 	
 	
