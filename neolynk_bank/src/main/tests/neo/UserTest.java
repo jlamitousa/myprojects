@@ -132,4 +132,10 @@ public class UserTest {
 	public void cannotInitializeNegativeAge() throws NeoLynkBankException {
 		User u = new User("Jean", "test", -1, "test", "test");
 	}
+	
+	@Test
+	public void initializeAgeMax() throws NeoLynkBankException {
+		User u = new User("Jean", "test", Integer.MAX_VALUE, "test", "test");
+		Assert.assertEquals(Integer.MAX_VALUE, u.getAge());
+	}
 }
