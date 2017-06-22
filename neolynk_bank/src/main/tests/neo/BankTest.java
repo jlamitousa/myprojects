@@ -151,12 +151,6 @@ public class BankTest {
 		Assert.assertEquals(newPhone, u.getPhone());
 	}
 	
-	@Test
-	public void addNewAccount() {
-		b.addNewAccount(this.defaultName, this.defaultLastName);
-		Assert.assertEquals(1, b.getTotalAccountCount());
-	}
-	
 	@Test 
 	public void addNewAccountToUser() throws NeoLynkBankException {
 		b.addUser(
@@ -164,7 +158,7 @@ public class BankTest {
 				this.defaultLastName, 
 				this.defaultAge, this.defaultString, this.defaultPhone);
 		b.addNewAccount(this.defaultName, this.defaultLastName);
-		Assert.assertEquals(1, b.getAccountCount(this.defaultName, this.defaultLastName));
+		Assert.assertEquals(1, b.getAccountCountByUser(this.defaultName, this.defaultLastName));
 	}
 	
 	@Test
@@ -178,7 +172,24 @@ public class BankTest {
 	public void checkUserAccountCountAfterDelete() {
 		bankWithUser.addNewAccount(this.defaultName, this.defaultLastName);
 		bankWithUser.deleteUser(this.defaultName, this.defaultLastName);
-		Assert.assertEquals(0, b.getAccountCount(this.defaultName, this.defaultLastName));
+		Assert.assertEquals(0, bankWithUser.getAccountCountByUser(this.defaultName, this.defaultLastName));
+	}
+	
+	@Test
+	public void checkAccountCreationImpactOnOtherUser() throws NeoLynkBankException {
+		
+		String secondUserName = "John";
+		String secondUserLastName = "Amitousa";
+		
+		bankWithUser.addUser(
+				secondUserName, 
+				secondUserLastName, 
+				this.defaultAge, this.defaultString, this.defaultPhone);
+		
+		bankWithUser.addNewAccount(this.defaultName, this.defaultLastName);
+		bankWithUser.addNewAccount(secondUserName, secondUserLastName);
+
+		Assert.assertEquals(1, bankWithUser.getAccountCountByUser(this.defaultName, this.defaultLastName));
 	}
 	
 	

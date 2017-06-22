@@ -1,7 +1,9 @@
 package neo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
@@ -9,11 +11,11 @@ import org.apache.commons.lang3.StringUtils;
 public class Bank {
 
 	private List<User> users;
-	private int nbAccount;
+	private Map<User, List<Account>> accounts;
 	
 	public Bank() {
 		this.users = new ArrayList<User>();
-		this.nbAccount = 0;
+		this.accounts = new HashMap<User, List<Account>>();
 	}
 	
 	
@@ -22,13 +24,19 @@ public class Bank {
 	}
 	
 	public void addUser(String userName, String userLastName, int userAge, String adresseDescription, String phone) throws NeoLynkBankException {
-		this.users.add(new User(userName, userLastName, userAge, adresseDescription, phone));
+		
+		User u = new User(userName, userLastName, userAge, adresseDescription, phone); 
+		
+		this.users.add(u);
+		this.accounts.put(u, new ArrayList<Account>());
 	}
 	
 	public void deleteUser(String name, String lastName) {
+		
 		User u = findUser(name, lastName);
+		
 		this.users.remove(u);
-		this.nbAccount--;
+		this.accounts.remove(u);
 	}
 	
 	public User findUser(String name, String lastName) {
@@ -64,16 +72,27 @@ public class Bank {
 	}
 
 	public void addNewAccount(String userName, String userLastName) {
-		this.nbAccount++;
+		
+		User u = findUser(userName, userLastName);
+		this.accounts.get(u).add(new Account());
 	}
-
 
 	public int getTotalAccountCount() {
-		return this.nbAccount;
+		
+		int total = 0;
+		
+		for(User u : this.accounts.keySet()) {
+			total += this.accounts.get(u).size();
+		}
+		
+		return total;
 	}
 
-
-	public Object getAccountCount(String defaultName, String defaultLastName) {
-		return this.nbAccount;
+	public Object getAccountCountByUser(String userName, String userLastName) {
+		
+		User u = findUser(userName, userLastName);
+		int total = (u != null) ? this.accounts.get(u).size() : 0;
+		
+		return total;
 	}
 }
