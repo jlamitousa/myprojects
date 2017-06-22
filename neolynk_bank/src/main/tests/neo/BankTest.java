@@ -148,6 +148,7 @@ public class BankTest {
 		Assert.assertEquals(newPhone, u.getPhone());
 	}
 	
+	@Test
 	public void addNewAccount() {
 		b.addNewAccount();
 		Assert.assertEquals(1, b.getAccountCount());
