@@ -8,10 +8,12 @@ import org.junit.Test;
 public class UserTest {
 
 	private User u;
+	private String bigString;
 	
 	@Before
 	public void init() throws NeoLynkBankException {
 		this.u = new User("Jean-Luc", "Amitousa", 10, "9, allée des rosiers 92230 Genneviliers, France", "0605040302");
+		this.bigString = "ce que dit cette phrase est faux. le kfc c'est bon. de lettres inutiles.";
 	}
 	
 	
@@ -113,9 +115,8 @@ public class UserTest {
 	
 	@Test
 	public void initializeBigName() throws NeoLynkBankException {
-		String bigName = "ce que dit cette phrase est faux. le kfc c'est bon. de lettres inutiles.";
-		User u = new User(bigName, "test", 1, "", "");
-		Assert.assertEquals(bigName, u.getName());
+		User u = new User(this.bigString, "test", 1, "", "");
+		Assert.assertEquals(this.bigString, u.getName());
 	}
 	
 	@Test(expected=NeoLynkBankException.class)
@@ -126,6 +127,12 @@ public class UserTest {
 	@Test(expected=NeoLynkBankException.class)
 	public void cannotInitializeLastNameEmpty() throws NeoLynkBankException {
 		new User("Jean", "", 1, "test", "test");
+	}
+	
+	@Test
+	public void initializeBigLastName() throws NeoLynkBankException {
+		User u = new User("test", this.bigString, 1, "", "");
+		Assert.assertEquals(this.bigString, u.getLastName());
 	}
 	
 	@Test(expected=NeoLynkBankException.class)
