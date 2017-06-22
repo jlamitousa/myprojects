@@ -103,12 +103,12 @@ public class UserTest {
 	
 	@Test(expected=NeoLynkBankException.class)
 	public void cannotInitializeNameNull() throws NeoLynkBankException {
-		User u = new User(null, "", -1, "", "");
+		User u = new User(null, "test", 1, "test", "test");
 	}
 	
 	@Test(expected=NeoLynkBankException.class)
 	public void cannotInitializeNameEmpty() throws NeoLynkBankException {
-		User u = new User("", "", -1, "", "");
+		User u = new User("", "tet", 1, "test", "test");
 	}
 	
 	@Test
@@ -120,11 +120,11 @@ public class UserTest {
 	
 	@Test(expected=NeoLynkBankException.class)
 	public void cannotInitializeLastNameNull() throws NeoLynkBankException {
-		User u = new User("Jean", null, -1, "", "");
+		User u = new User("Jean", null, 1, "test", "test");
 	}
 	
 	@Test(expected=NeoLynkBankException.class)
 	public void cannotInitializeLastNameEmpty() throws NeoLynkBankException {
-		User u = new User("Jean", "", -1, "", "");
+		User u = new User("Jean", "", 1, "test", "test");
 	}
 }
