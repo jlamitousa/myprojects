@@ -155,4 +155,19 @@ public class BankTest {
 	/* ******************* *
 	 *  TESTS AUX LIMITES  *
 	 * ******************* */
+	
+	@Test
+	public void invalidUserNotAdded() {
+		
+		try {
+			b.addUser(
+					null, 
+					this.defaultLastName, 
+					this.defaultAge, this.defaultString, this.defaultPhone);
+		} catch(NeoLynkBankException nbe) {
+			//In order to avoid ambiguity in ouput, we don't log this exception.
+		}
+
+		Assert.assertTrue(b.getNumberOfUser()==0);
+	}
 }
