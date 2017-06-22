@@ -174,6 +174,13 @@ public class BankTest {
 		Assert.assertEquals(0, bankWithUser.getTotalAccountCount());
 	}
 	
+	@Test
+	public void checkUserAccountCountAfterDelete() {
+		bankWithUser.addNewAccount(this.defaultName, this.defaultLastName);
+		bankWithUser.deleteUser(this.defaultName, this.defaultLastName);
+		Assert.assertEquals(0, b.getAccountCount(this.defaultName, this.defaultLastName));
+	}
+	
 	
 	
 	
