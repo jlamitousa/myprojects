@@ -117,4 +117,9 @@ public class UserTest {
 		User u = new User(bigName, "", -1, "", "");
 		Assert.assertEquals(bigName, u.getName());
 	}
+	
+	@Test(expected=NeoLynkBankException.class)
+	public void cannotInitializeLastNameNull() throws NeoLynkBankException {
+		User u = new User("Jean", null, -1, "", "");
+	}
 }
