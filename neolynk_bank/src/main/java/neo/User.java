@@ -1,5 +1,8 @@
 package neo;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.apache.commons.lang3.StringUtils;
 
 
@@ -23,6 +26,10 @@ public class User {
 		
 		if(userAge < 0) {
 			throw new NeoLynkBankException("Invalid age (negative)");
+		}
+		
+		if(StringUtils.isNotEmpty(phone) && !isValidPhone(phone)) {
+			throw new NeoLynkBankException("Invalid phone (non numeric characters)");
 		}
 		
 		this.name = userName;
@@ -70,5 +77,11 @@ public class User {
 
 	public void sePhone(String phone) {
 		this.phone = phone;
+	}
+	
+	private boolean isValidPhone(String phone) {
+		Pattern p = Pattern.compile("^[0-9]+$");
+		Matcher m = p.matcher(phone);
+		return m.matches();
 	}
 }
