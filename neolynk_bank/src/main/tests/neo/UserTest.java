@@ -175,4 +175,9 @@ public class UserTest {
 		User u = new User("Jean", "test", 10, "", "");
 		Assert.assertEquals("", u.getPhone());
 	}
+	
+	@Test
+	public void phoneIsNumberOnly1() throws NeoLynkBankException {
+		new User("Jean", "test", 10, "", "0605040302");
+	}
 }
