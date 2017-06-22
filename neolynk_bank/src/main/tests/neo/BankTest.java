@@ -37,7 +37,7 @@ public class BankTest {
 	@Test
 	public void getNumberOfUserAfterDelete() throws NeoLynkBankException {
 		b.addUser(this.defaultName, this.defaultLastName, this.defaultAge, this.defaultString, this.defaultPhone);
-		b.deleteUser();
+		b.deleteUser(this.defaultName, this.defaultLastName);
 		Assert.assertEquals(0, b.getNumberOfUser());
 	}
 	
@@ -56,5 +56,19 @@ public class BankTest {
 		Assert.assertEquals(this.defaultAge, u.getAge());
 		Assert.assertEquals(this.defaultString, u.getAdresseDescription());
 		Assert.assertEquals(this.defaultPhone, u.getPhone());
+	}
+	
+	@Test
+	public void findUserJeanLucAmitousaAfterDel() throws NeoLynkBankException {
+		
+		User u = null;
+		String name = "Jean-Luc";
+		String lastName = "Amitousa";
+		
+		b.addUser(name, lastName, this.defaultAge, this.defaultString, this.defaultPhone);
+		b.deleteUser(name, lastName);
+		u = b.findUser(name, lastName);
+		
+		Assert.assertEquals(null, u);
 	}
 }

@@ -24,20 +24,22 @@ public class Bank {
 		this.users.add(new User(userName, userLastName, userAge, adresseDescription, phone));
 	}
 	
-	public void deleteUser() {
+	public void deleteUser(String name, String lastName) {
 		this.users.remove(0);
 	}
 	
-	public User findUser(String name, String lastName) throws NeoLynkBankException {
+	public User findUser(String name, String lastName) {
 		
 		User u = null;
 		
-		try {
-			u = new User("Jean-Luc", "Amitousa", 26, "blabla", "0605040302");
-		} catch(NeoLynkBankException nbe) {
-			//TODO A logger à partir d'un framework de log. Vu que ce n'est pas néccéssaire 
-			//pour ce test, je ne le ferais pas.
-			nbe.printStackTrace();
+		List<User> res = 
+				this.users.stream()
+				.filter(u1 -> StringUtils.equals(u1.getName(), name))
+				.filter(u2 -> StringUtils.equals(u2.getLastName(), lastName))
+				.collect(Collectors.toList());
+		
+		if(res != null && res.size() > 0) {
+			u = res.get(0);
 		}
 		
 		return u;
