@@ -72,4 +72,10 @@ public class AcccountTest {
 	public void updateToNullDateIsKO() throws NeoLynkBankException {
 		a.setDateCreation(null);
 	}
+	
+	@Test
+	public void balanceUpdateToMax() {
+		a.setBalance(Integer.MAX_VALUE);
+		Assert.assertEquals(Integer.MAX_VALUE, a.getBalance());
+	}
 }
