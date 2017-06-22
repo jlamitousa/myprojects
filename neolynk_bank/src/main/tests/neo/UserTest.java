@@ -110,4 +110,11 @@ public class UserTest {
 	public void cannotInitializeNameEmpty() throws NeoLynkBankException {
 		User u = new User("", "", -1, "", "");
 	}
+	
+	@Test
+	public void initializeBigName() throws NeoLynkBankException {
+		String bigName = "ce que dit cette phrase est faux. le kfc c'est bon. de lettres inutiles.";
+		User u = new User(bigName, "", -1, "", "");
+		Assert.assertEquals(bigName, u.getName());
+	}
 }
