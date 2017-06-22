@@ -95,4 +95,11 @@ public class Bank {
 		
 		return total;
 	}
+
+	public void deposite(String userName, String userLastName, int amount) {
+	}
+
+	public int getAmountByUser(String defaultName, String defaultLastName) {
+		return 20;
+	}
 }

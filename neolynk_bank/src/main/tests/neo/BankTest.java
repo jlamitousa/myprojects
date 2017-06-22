@@ -192,6 +192,12 @@ public class BankTest {
 		Assert.assertEquals(1, bankWithUser.getAccountCountByUser(this.defaultName, this.defaultLastName));
 	}
 	
+	@Test
+	public void checkMoneyDeposite() {
+		bankWithUser.deposite(this.defaultName, this.defaultLastName, 20);
+		Assert.assertEquals(20, bankWithUser.getAmountByUser(this.defaultName, this.defaultLastName));
+	}
+	
 	
 	
 	
