@@ -102,7 +102,6 @@ public class UserTest {
 	
 	
 	
-	
 	/* ******************* *
 	 *  TESTS AUX LIMITES  *
 	 * ******************* */
