@@ -59,6 +59,23 @@ public class BankTest {
 	}
 	
 	@Test
+	public void findUserDavidDuLacAfterAdd() throws NeoLynkBankException {
+		
+		User u = null;
+		String name = "David";
+		String lastName = "DuLac";
+		
+		b.addUser(name, lastName, this.defaultAge, this.defaultString, this.defaultPhone);
+		u = b.findUser(name, lastName);
+		
+		Assert.assertEquals(name, u.getName());
+		Assert.assertEquals(lastName, u.getLastName());
+		Assert.assertEquals(this.defaultAge, u.getAge());
+		Assert.assertEquals(this.defaultString, u.getAdresseDescription());
+		Assert.assertEquals(this.defaultPhone, u.getPhone());
+	}
+	
+	@Test
 	public void findUserJeanLucAmitousaAfterDel() throws NeoLynkBankException {
 		
 		User u = null;
