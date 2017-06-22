@@ -42,7 +42,7 @@ public class BankTest {
 	}
 	
 	@Test
-	public void findUserJeanLucAfterAdd() throws NeoLynkBankException {
+	public void findUserJeanLucAmitousaAfterAdd() throws NeoLynkBankException {
 		
 		User u = null;
 		String name = "Jean-Luc";
@@ -52,5 +52,9 @@ public class BankTest {
 		u = b.findUser(name, lastName);
 		
 		Assert.assertEquals(name, u.getName());
+		Assert.assertEquals(lastName, u.getLastName());
+		Assert.assertEquals(this.defaultAge, u.getAge());
+		Assert.assertEquals(this.defaultString, u.getAdresseDescription());
+		Assert.assertEquals(this.defaultPhone, u.getPhone());
 	}
 }

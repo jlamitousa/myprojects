@@ -33,7 +33,7 @@ public class Bank {
 		User u = null;
 		
 		try {
-			u = new User("Jean-Luc", "Amitousa", 15, "blabla", "");
+			u = new User("Jean-Luc", "Amitousa", 26, "blabla", "0605040302");
 		} catch(NeoLynkBankException nbe) {
 			//TODO A logger à partir d'un framework de log. Vu que ce n'est pas néccéssaire 
 			//pour ce test, je ne le ferais pas.
