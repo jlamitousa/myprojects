@@ -189,4 +189,9 @@ public class UserTest {
 	public void phoneWithNonNumberOnlyIsKO() throws NeoLynkBankException {
 		new User("Jean", defaultString, 10, "", "a6004+302");
 	}
+	
+	@Test(expected=NeoLynkBankException.class)
+	public void phoneWithNegativeNumberIsKO() throws NeoLynkBankException {
+		new User("Jean", defaultString, 10, "", "-6004302");
+	}
 }
