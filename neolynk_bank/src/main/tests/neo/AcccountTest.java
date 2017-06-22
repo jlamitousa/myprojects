@@ -78,4 +78,10 @@ public class AcccountTest {
 		a.setBalance(Integer.MAX_VALUE);
 		Assert.assertEquals(Integer.MAX_VALUE, a.getBalance());
 	}
+	
+	@Test
+	public void balanceUpdateToMin() {
+		a.setBalance(Integer.MIN_VALUE);
+		Assert.assertEquals(Integer.MIN_VALUE, a.getBalance());
+	}
 }
