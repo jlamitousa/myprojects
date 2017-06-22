@@ -177,7 +177,7 @@ public class UserTest {
 	}
 	
 	@Test
-	public void phoneIsNumberOnly1() throws NeoLynkBankException {
+	public void phoneWithNumberOnlyIsOK() throws NeoLynkBankException {
 		new User("Jean", "test", 10, "", "0605040302");
 	}
 }
