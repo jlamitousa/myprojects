@@ -17,8 +17,8 @@ public class User {
 			throw new NeoLynkBankException("Invalid username (null or empty)");
 		}
 		
-		if(userLastName==null) {
-			throw new NeoLynkBankException("Invalid username (null)");
+		if(StringUtils.isEmpty(userLastName)) {
+			throw new NeoLynkBankException("Invalid lastname (null or empty)");
 		}
 		
 		this.name = userName;
