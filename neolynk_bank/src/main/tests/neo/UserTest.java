@@ -169,4 +169,10 @@ public class UserTest {
 		User u = new User("Jean", "test", 10, "", null);
 		Assert.assertEquals(null, u.getPhone());
 	}
+	
+	@Test
+	public void emptyPhoneIsPossible() throws NeoLynkBankException {
+		User u = new User("Jean", "test", 10, "", "");
+		Assert.assertEquals("", u.getPhone());
+	}
 }
