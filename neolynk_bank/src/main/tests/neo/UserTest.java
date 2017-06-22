@@ -163,4 +163,10 @@ public class UserTest {
 		User u = new User("test", "test", 1, this.bigString, "");
 		Assert.assertEquals(this.bigString, u.getAdresseDescription());
 	}
+	
+	@Test
+	public void nullPhoneIsPossible() throws NeoLynkBankException {
+		User u = new User("Jean", "test", 10, "", null);
+		Assert.assertEquals(null, u.getPhone());
+	}
 }
