@@ -151,4 +151,10 @@ public class UserTest {
 		User u = new User("Jean", "test", 10, null, "test");
 		Assert.assertEquals(null, u.getAdresseDescription());
 	}
+	
+	@Test
+	public void emptyAdresseIsPossible() throws NeoLynkBankException {
+		User u = new User("Jean", "test", 10, "", "test");
+		Assert.assertEquals("", u.getAdresseDescription());
+	}
 }
