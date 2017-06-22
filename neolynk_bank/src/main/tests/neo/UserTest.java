@@ -157,4 +157,10 @@ public class UserTest {
 		User u = new User("Jean", "test", 10, "", "test");
 		Assert.assertEquals("", u.getAdresseDescription());
 	}
+	
+	@Test
+	public void initializeBigAdresse() throws NeoLynkBankException {
+		User u = new User("test", "test", 1, this.bigString, "");
+		Assert.assertEquals(this.bigString, u.getAdresseDescription());
+	}
 }
