@@ -148,6 +148,11 @@ public class BankTest {
 		Assert.assertEquals(newPhone, u.getPhone());
 	}
 	
+	public void addNewAccount() {
+		b.addNewAccount();
+		Assert.assertEquals(1, b.getAccountCount());
+	}
+	
 	
 	
 	

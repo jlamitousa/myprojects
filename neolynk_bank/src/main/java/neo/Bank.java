@@ -60,4 +60,12 @@ public class Bank {
 		
 		return true;
 	}
+
+	public void addNewAccount() {
+	}
+
+
+	public int getAccountCount() {
+		return 1;
+	}
 }
