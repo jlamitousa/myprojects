@@ -19,7 +19,13 @@ public class AcccountTest {
 		this.sdf = new SimpleDateFormat("dd/MM/yyyy");
 	}
 	
+	
+	
 
+	
+	/* **************** *
+	 *  TESTS BASIQUES  *
+	 * **************** */
 	
 	@Test
 	public void checkNewAccountCreationDate() {
@@ -31,7 +37,7 @@ public class AcccountTest {
 	}
 	
 	@Test
-	public void checkDateCreationUpdate() throws ParseException {
+	public void checkDateCreationUpdate() throws ParseException, NeoLynkBankException {
 		
 		String newDateStr = "22/06/2017";
 		Date newDate = sdf.parse(newDateStr);
@@ -41,5 +47,18 @@ public class AcccountTest {
 		accountCreationDate = sdf.format(a.getCreationDate());
 		
 		Assert.assertEquals(newDateStr, accountCreationDate);
+	}
+	
+	
+	
+	
+	
+	/* ******************* *
+	 *  TESTS AUX LIMITES  *
+	 * ******************* */
+	
+	@Test(expected=NeoLynkBankException.class)
+	public void updateToNullDateIsKO() throws NeoLynkBankException {
+		a.setDateCreation(null);
 	}
 }

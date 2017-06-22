@@ -14,7 +14,12 @@ public class Account {
 		return this.creationDate;
 	}
 
-	public void setDateCreation(Date newDate) {
+	public void setDateCreation(Date newDate) throws NeoLynkBankException {
+		
+		if(newDate==null) {
+			throw new NeoLynkBankException("Invalid argument (null).");
+		}
+		
 		this.creationDate = newDate;
 	}	
 }
