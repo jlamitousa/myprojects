@@ -10,11 +10,13 @@ public class UserTest {
 	private User u;
 	private String bigString;
 	private String defaultPhone;
+	private String defaultString;
 	
 	@Before
 	public void init() throws NeoLynkBankException {
 		this.bigString = "ce que dit cette phrase est faux. le kfc c'est bon. de lettres inutiles.";
 		this.defaultPhone = "0102030405";
+		this.defaultString = "blabla";
 		this.u = new User("Jean-Luc", "Amitousa", 10, "9, allée des rosiers 92230 Genneviliers, France", "0605040302");
 	}
 	
@@ -107,84 +109,84 @@ public class UserTest {
 	
 	@Test(expected=NeoLynkBankException.class)
 	public void cannotInitializeNameNull() throws NeoLynkBankException {
-		new User(null, "test", 1, "test", this.defaultPhone);
+		new User(null, defaultString, 1, defaultString, this.defaultPhone);
 	}
 	
 	@Test(expected=NeoLynkBankException.class)
 	public void cannotInitializeNameEmpty() throws NeoLynkBankException {
-		new User("", "tet", 1, "test", this.defaultPhone);
+		new User("", defaultString, 1, defaultString, this.defaultPhone);
 	}
 	
 	@Test
 	public void initializeBigName() throws NeoLynkBankException {
-		User u = new User(this.bigString, "test", 1, "", "");
+		User u = new User(this.bigString, defaultString, 1, "", "");
 		Assert.assertEquals(this.bigString, u.getName());
 	}
 	
 	@Test(expected=NeoLynkBankException.class)
 	public void cannotInitializeLastNameNull() throws NeoLynkBankException {
-		new User("Jean", null, 1, "test", this.defaultPhone);
+		new User("Jean", null, 1, defaultString, this.defaultPhone);
 	}
 	
 	@Test(expected=NeoLynkBankException.class)
 	public void cannotInitializeLastNameEmpty() throws NeoLynkBankException {
-		new User("Jean", "", 1, "test", this.defaultPhone);
+		new User("Jean", "", 1, defaultString, this.defaultPhone);
 	}
 	
 	@Test
 	public void initializeBigLastName() throws NeoLynkBankException {
-		User u = new User("test", this.bigString, 1, "", "");
+		User u = new User(defaultString, this.bigString, 1, "", "");
 		Assert.assertEquals(this.bigString, u.getLastName());
 	}
 	
 	@Test(expected=NeoLynkBankException.class)
 	public void cannotInitializeNegativeAge() throws NeoLynkBankException {
-		new User("Jean", "test", -1, "test", this.defaultPhone);
+		new User("Jean", defaultString, -1, defaultString, this.defaultPhone);
 	}
 	
 	@Test
 	public void initializeAgeMax() throws NeoLynkBankException {
-		User u = new User("Jean", "test", Integer.MAX_VALUE, "test", "0102030405");
+		User u = new User("Jean", defaultString, Integer.MAX_VALUE, "test", "0102030405");
 		Assert.assertEquals(Integer.MAX_VALUE, u.getAge());
 	}
 	
 	@Test
 	public void nullAdresseIsPossible() throws NeoLynkBankException {
-		User u = new User("Jean", "test", 10, null, "0102034005");
+		User u = new User("Jean", defaultString, 10, null, "0102034005");
 		Assert.assertEquals(null, u.getAdresseDescription());
 	}
 	
 	@Test
 	public void emptyAdresseIsPossible() throws NeoLynkBankException {
-		User u = new User("Jean", "test", 10, "", this.defaultPhone);
+		User u = new User("Jean", defaultString, 10, "", this.defaultPhone);
 		Assert.assertEquals("", u.getAdresseDescription());
 	}
 	
 	@Test
 	public void initializeBigAdresse() throws NeoLynkBankException {
-		User u = new User("test", "test", 1, this.bigString, "");
+		User u = new User(defaultString, defaultString, 1, this.bigString, "");
 		Assert.assertEquals(this.bigString, u.getAdresseDescription());
 	}
 	
 	@Test
 	public void nullPhoneIsPossible() throws NeoLynkBankException {
-		User u = new User("Jean", "test", 10, "", null);
+		User u = new User("Jean", defaultString, 10, "", null);
 		Assert.assertEquals(null, u.getPhone());
 	}
 	
 	@Test
 	public void emptyPhoneIsPossible() throws NeoLynkBankException {
-		User u = new User("Jean", "test", 10, "", "");
+		User u = new User("Jean", defaultString, 10, "", "");
 		Assert.assertEquals("", u.getPhone());
 	}
 	
 	@Test
 	public void phoneWithNumberOnlyIsOK() throws NeoLynkBankException {
-		new User("Jean", "test", 10, "", "0605040302");
+		new User("Jean", defaultString, 10, "", "0605040302");
 	}
 	
 	@Test(expected=NeoLynkBankException.class)
 	public void phoneWithNonNumberOnlyIsKO() throws NeoLynkBankException {
-		new User("Jean", "test", 10, "", "a6004+302");
+		new User("Jean", defaultString, 10, "", "a6004+302");
 	}
 }
