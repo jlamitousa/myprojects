@@ -7,6 +7,7 @@ import org.junit.Test;
 public class BankTest {
 
 	private Bank b;
+	private Bank bankWithUser;
 	private String defaultString;
 	private String defaultName;
 	private String defaultLastName;
@@ -14,13 +15,15 @@ public class BankTest {
 	private int defaultAge;
 
 	@Before
-	public void init() {
+	public void init() throws NeoLynkBankException {
 		this.defaultString = "blabla";
 		this.defaultName = "Boris";
 		this.defaultLastName = "Dupont";
 		this.defaultPhone = "0605040302";
 		this.defaultAge = 26;
 		this.b = new Bank();
+		this.bankWithUser = new Bank();
+		this.bankWithUser.addUser(this.defaultName, this.defaultLastName, this.defaultAge, this.defaultString, this.defaultPhone);
 	}
 	
 	
@@ -162,6 +165,13 @@ public class BankTest {
 				this.defaultAge, this.defaultString, this.defaultPhone);
 		b.addNewAccount(this.defaultName, this.defaultLastName);
 		Assert.assertEquals(1, b.getAccountCount(this.defaultName, this.defaultLastName));
+	}
+	
+	@Test
+	public void checkGlobalAccountCountAfterDelete() {
+		bankWithUser.addNewAccount(this.defaultName, this.defaultLastName);
+		bankWithUser.deleteUser(this.defaultName, this.defaultLastName);
+		Assert.assertEquals(0, bankWithUser.getTotalAccountCount());
 	}
 	
 	

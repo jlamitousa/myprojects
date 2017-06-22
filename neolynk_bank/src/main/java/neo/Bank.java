@@ -9,10 +9,11 @@ import org.apache.commons.lang3.StringUtils;
 public class Bank {
 
 	private List<User> users;
-	
+	private int nbAccount;
 	
 	public Bank() {
 		this.users = new ArrayList<User>();
+		this.nbAccount = 0;
 	}
 	
 	
@@ -27,6 +28,7 @@ public class Bank {
 	public void deleteUser(String name, String lastName) {
 		User u = findUser(name, lastName);
 		this.users.remove(u);
+		this.nbAccount--;
 	}
 	
 	public User findUser(String name, String lastName) {
@@ -62,15 +64,16 @@ public class Bank {
 	}
 
 	public void addNewAccount(String userName, String userLastName) {
+		this.nbAccount++;
 	}
 
 
 	public int getTotalAccountCount() {
-		return 1;
+		return this.nbAccount;
 	}
 
 
 	public Object getAccountCount(String defaultName, String defaultLastName) {
-		return 1;
+		return this.nbAccount;
 	}
 }
