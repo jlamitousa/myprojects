@@ -7,9 +7,19 @@ import org.junit.Test;
 public class BankTest {
 
 	private Bank b;
+	private String defaultString;
+	private String defaultName;
+	private String defaultLastName;
+	private String defaultPhone;
+	private int defaultAge;
 
 	@Before
 	public void init() {
+		this.defaultString = "blabla";
+		this.defaultName = "Boris";
+		this.defaultLastName = "Dupont";
+		this.defaultPhone = "0605040302";
+		this.defaultAge = 26;
 		this.b = new Bank();
 	}
 	
@@ -19,15 +29,28 @@ public class BankTest {
 	}
 	
 	@Test
-	public void getNumberOfUserAfterAdd() {
-		b.addUser();
+	public void getNumberOfUserAfterAdd() throws NeoLynkBankException {
+		b.addUser(this.defaultName, this.defaultLastName, this.defaultAge, this.defaultString, this.defaultPhone);
 		Assert.assertEquals(1, b.getNumberOfUser());
 	}
 	
 	@Test
-	public void getNumberOfUserAfterDelete() {
-		b.addUser();
+	public void getNumberOfUserAfterDelete() throws NeoLynkBankException {
+		b.addUser(this.defaultName, this.defaultLastName, this.defaultAge, this.defaultString, this.defaultPhone);
 		b.deleteUser();
 		Assert.assertEquals(0, b.getNumberOfUser());
+	}
+	
+	@Test
+	public void findUserJeanLucAfterAdd() throws NeoLynkBankException {
+		
+		User u = null;
+		String name = "Jean-Luc";
+		String lastName = "Amitousa";
+		
+		b.addUser(name, lastName, this.defaultAge, this.defaultString, this.defaultPhone);
+		u = b.findUser(name, lastName);
+		
+		Assert.assertEquals(name, u.getName());
 	}
 }
