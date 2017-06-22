@@ -45,4 +45,19 @@ public class Bank {
 		
 		return u;
 	}
+
+	public boolean updateUserInfos(
+			String name, String lastName, 
+			String newName, String newLastName, int newAge, String newAdrDesc, String newPhone) {
+		
+		User u = findUser(name, lastName);
+		
+		u.setName(newName);
+		u.setUserLastname(newLastName);
+		u.setUserAge(newAge);
+		u.setUserAdresseDescription(newAdrDesc);
+		u.setPhone(newPhone);
+		
+		return true;
+	}
 }

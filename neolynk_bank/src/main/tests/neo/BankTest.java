@@ -23,6 +23,14 @@ public class BankTest {
 		this.b = new Bank();
 	}
 	
+	
+	
+	
+	
+	/* **************** *
+	 *  TESTS BASIQUES  *
+	 * **************** */
+	
 	@Test
 	public void getNumberOfUserInit() {
 		Assert.assertEquals(0, b.getNumberOfUser());
@@ -110,4 +118,41 @@ public class BankTest {
 		Assert.assertEquals(this.defaultString, u.getAdresseDescription());
 		Assert.assertEquals(this.defaultPhone, u.getPhone());
 	}
+	
+	@Test
+	public void updateUserInfos() throws NeoLynkBankException {
+		
+		User u = null;
+		String newName = "newName";
+		String newLastName = "newLastName";
+		int newAge = 30;
+		String newAdrDesc = "Loin dans l'espace";
+		String newPhone = "0706050403";
+		
+		b.addUser(
+				this.defaultName, 
+				this.defaultLastName, 
+				this.defaultAge, this.defaultString, this.defaultPhone);
+		
+		b.updateUserInfos(
+				this.defaultName, 
+				this.defaultLastName, 
+				newName, newLastName, newAge, newAdrDesc, newPhone);
+		
+		u = b.findUser(newName, newLastName);
+		
+		Assert.assertEquals(newName, u.getName());
+		Assert.assertEquals(newLastName, u.getLastName());
+		Assert.assertEquals(newAge, u.getAge());
+		Assert.assertEquals(newAdrDesc, u.getAdresseDescription());
+		Assert.assertEquals(newPhone, u.getPhone());
+	}
+	
+	
+	
+	
+	
+	/* ******************* *
+	 *  TESTS AUX LIMITES  *
+	 * ******************* */
 }

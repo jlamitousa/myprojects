@@ -94,7 +94,7 @@ public class UserTest {
 		
 		String phone = "0102030405";
 		
-		u.sePhone(phone);
+		u.setPhone(phone);
 		Assert.assertThat(u.getPhone(), IsEqual.equalTo(phone));
 	}
 	

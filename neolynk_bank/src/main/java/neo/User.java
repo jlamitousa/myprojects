@@ -75,7 +75,7 @@ public class User {
 		return this.phone;
 	}
 
-	public void sePhone(String phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	
