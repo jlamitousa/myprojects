@@ -5,9 +5,11 @@ import java.util.Date;
 public class Account {
 
 	private Date creationDate;
+	private int balance;
 	
 	public Account() {
 		this.creationDate = new Date();
+		this.balance = 0;
 	}
 	
 	public Date getCreationDate() {
@@ -24,6 +26,10 @@ public class Account {
 	}
 
 	public int getBalance() {
-		return 0;
+		return this.balance;
+	}
+
+	public void setBalance(int newBalance) {
+		this.balance = newBalance;
 	}	
 }

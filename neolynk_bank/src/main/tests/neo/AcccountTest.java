@@ -54,6 +54,12 @@ public class AcccountTest {
 		Assert.assertEquals(0, a.getBalance());
 	}
 	
+	@Test
+	public void checkBalanceUpdate() {
+		a.setBalance(10);
+		Assert.assertEquals(10, a.getBalance());
+	}
+	
 	
 	
 	
