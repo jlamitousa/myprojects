@@ -21,6 +21,10 @@ public class User {
 			throw new NeoLynkBankException("Invalid lastname (null or empty)");
 		}
 		
+		if(userAge < 0) {
+			throw new NeoLynkBankException("Invalid age (negative)");
+		}
+		
 		this.name = userName;
 		this.lastName = userLastName;
 		this.age = userAge;

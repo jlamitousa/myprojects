@@ -114,7 +114,7 @@ public class UserTest {
 	@Test
 	public void initializeBigName() throws NeoLynkBankException {
 		String bigName = "ce que dit cette phrase est faux. le kfc c'est bon. de lettres inutiles.";
-		User u = new User(bigName, "test", -1, "", "");
+		User u = new User(bigName, "test", 1, "", "");
 		Assert.assertEquals(bigName, u.getName());
 	}
 	
@@ -126,5 +126,10 @@ public class UserTest {
 	@Test(expected=NeoLynkBankException.class)
 	public void cannotInitializeLastNameEmpty() throws NeoLynkBankException {
 		User u = new User("Jean", "", 1, "test", "test");
+	}
+	
+	@Test(expected=NeoLynkBankException.class)
+	public void cannotInitializeNegativeAge() throws NeoLynkBankException {
+		User u = new User("Jean", "test", -1, "test", "test");
 	}
 }
