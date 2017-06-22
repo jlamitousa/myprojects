@@ -25,7 +25,8 @@ public class Bank {
 	}
 	
 	public void deleteUser(String name, String lastName) {
-		this.users.remove(0);
+		User u = findUser(name, lastName);
+		this.users.remove(u);
 	}
 	
 	public User findUser(String name, String lastName) {

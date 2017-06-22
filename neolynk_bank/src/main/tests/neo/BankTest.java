@@ -88,4 +88,26 @@ public class BankTest {
 		
 		Assert.assertEquals(null, u);
 	}
+	
+	@Test
+	public void findUserJeanLucAfterDelDavid() throws NeoLynkBankException {
+		
+		String name1 = "Jean-Luc";
+		String lastName1 = "Amitousa";
+		String name2 = "David";
+		String lastName2 = "DuLac";
+		User u = null;
+		
+		b.addUser(name1, lastName1, this.defaultAge, this.defaultString, this.defaultPhone);
+		b.addUser(name2, lastName2, this.defaultAge, this.defaultString, this.defaultPhone);
+		b.deleteUser(name2, lastName2);
+		
+		u = b.findUser(name1, lastName1);
+		
+		Assert.assertEquals(name1, u.getName());
+		Assert.assertEquals(lastName1, u.getLastName());
+		Assert.assertEquals(this.defaultAge, u.getAge());
+		Assert.assertEquals(this.defaultString, u.getAdresseDescription());
+		Assert.assertEquals(this.defaultPhone, u.getPhone());
+	}
 }
