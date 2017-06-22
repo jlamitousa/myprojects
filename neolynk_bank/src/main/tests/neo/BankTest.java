@@ -150,8 +150,18 @@ public class BankTest {
 	
 	@Test
 	public void addNewAccount() {
-		b.addNewAccount();
-		Assert.assertEquals(1, b.getAccountCount());
+		b.addNewAccount(this.defaultName, this.defaultLastName);
+		Assert.assertEquals(1, b.getTotalAccountCount());
+	}
+	
+	@Test 
+	public void addNewAccountToUser() throws NeoLynkBankException {
+		b.addUser(
+				this.defaultName, 
+				this.defaultLastName, 
+				this.defaultAge, this.defaultString, this.defaultPhone);
+		b.addNewAccount(this.defaultName, this.defaultLastName);
+		Assert.assertEquals(1, b.getAccountCount(this.defaultName, this.defaultLastName));
 	}
 	
 	

@@ -61,11 +61,16 @@ public class Bank {
 		return true;
 	}
 
-	public void addNewAccount() {
+	public void addNewAccount(String userName, String userLastName) {
 	}
 
 
-	public int getAccountCount() {
+	public int getTotalAccountCount() {
+		return 1;
+	}
+
+
+	public Object getAccountCount(String defaultName, String defaultLastName) {
 		return 1;
 	}
 }
