@@ -145,4 +145,10 @@ public class UserTest {
 		User u = new User("Jean", "test", Integer.MAX_VALUE, "test", "test");
 		Assert.assertEquals(Integer.MAX_VALUE, u.getAge());
 	}
+	
+	@Test
+	public void nullAdresseIsPossible() throws NeoLynkBankException {
+		User u = new User("Jean", "test", 10, null, "test");
+		Assert.assertEquals(null, u.getAdresseDescription());
+	}
 }
