@@ -111,6 +111,11 @@ public class Bank {
 		}
 		
 		a = this.accounts.get(u).get(0);
+		
+		if((a.getBalance()+amount) < 0) {
+			throw new NeoLynkBankException("Impossible operation. Yes ... You have too much money ...");
+		}
+		
 		a.setBalance(a.getBalance()+amount);
 	}
 	

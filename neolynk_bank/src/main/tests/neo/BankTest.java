@@ -8,6 +8,7 @@ public class BankTest {
 
 	private Bank emptyBank;
 	private Bank bankWithUser;
+	private Bank bankWithUserAndAccount;
 	private String defaultString;
 	private String defaultName;
 	private String defaultLastName;
@@ -23,7 +24,14 @@ public class BankTest {
 		this.defaultAge = 26;
 		this.emptyBank = new Bank();
 		this.bankWithUser = new Bank();
-		this.bankWithUser.addUser(this.defaultName, this.defaultLastName, this.defaultAge, this.defaultString, this.defaultPhone);
+		this.bankWithUser.addUser(
+				this.defaultName, this.defaultLastName, 
+				this.defaultAge, this.defaultString, this.defaultPhone);
+		this.bankWithUserAndAccount = new Bank();
+		this.bankWithUserAndAccount.addUser(
+				this.defaultName, this.defaultLastName, 
+				this.defaultAge, this.defaultString, this.defaultPhone);
+		this.bankWithUserAndAccount.addNewAccount(this.defaultName, this.defaultLastName);
 	}
 	
 	
@@ -243,5 +251,12 @@ public class BankTest {
 	@Test(expected=NeoLynkBankException.class)
 	public void addAccountToNonExistingUserIsKO() throws NeoLynkBankException {
 		emptyBank.addNewAccount(this.defaultName, this.defaultLastName);
+	}
+	
+	@Test(expected=NeoLynkBankException.class)
+	public void addMoreMoneyThenPossibleIsKO() throws NeoLynkBankException {
+		bankWithUserAndAccount.deposite(this.defaultName, this.defaultLastName, Integer.MAX_VALUE);
+		bankWithUserAndAccount.deposite(this.defaultName, this.defaultLastName, 1);
+		
 	}
 }
