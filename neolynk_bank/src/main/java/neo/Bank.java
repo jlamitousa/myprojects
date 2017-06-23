@@ -71,9 +71,14 @@ public class Bank {
 		return true;
 	}
 
-	public void addNewAccount(String userName, String userLastName) {
+	public void addNewAccount(String userName, String userLastName) throws NeoLynkBankException {
 		
 		User u = findUser(userName, userLastName);
+		
+		if(u==null) {
+			throw new NeoLynkBankException("Invalid user");
+		}
+		
 		this.accounts.get(u).add(new Account());
 	}
 

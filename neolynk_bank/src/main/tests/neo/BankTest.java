@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class BankTest {
 
-	private Bank b;
+	private Bank emptyBank;
 	private Bank bankWithUser;
 	private String defaultString;
 	private String defaultName;
@@ -21,7 +21,7 @@ public class BankTest {
 		this.defaultLastName = "Dupont";
 		this.defaultPhone = "0605040302";
 		this.defaultAge = 26;
-		this.b = new Bank();
+		this.emptyBank = new Bank();
 		this.bankWithUser = new Bank();
 		this.bankWithUser.addUser(this.defaultName, this.defaultLastName, this.defaultAge, this.defaultString, this.defaultPhone);
 	}
@@ -36,20 +36,20 @@ public class BankTest {
 	
 	@Test
 	public void getNumberOfUserInit() {
-		Assert.assertEquals(0, b.getNumberOfUser());
+		Assert.assertEquals(0, emptyBank.getNumberOfUser());
 	}
 	
 	@Test
 	public void getNumberOfUserAfterAdd() throws NeoLynkBankException {
-		b.addUser(this.defaultName, this.defaultLastName, this.defaultAge, this.defaultString, this.defaultPhone);
-		Assert.assertEquals(1, b.getNumberOfUser());
+		emptyBank.addUser(this.defaultName, this.defaultLastName, this.defaultAge, this.defaultString, this.defaultPhone);
+		Assert.assertEquals(1, emptyBank.getNumberOfUser());
 	}
 	
 	@Test
 	public void getNumberOfUserAfterDelete() throws NeoLynkBankException {
-		b.addUser(this.defaultName, this.defaultLastName, this.defaultAge, this.defaultString, this.defaultPhone);
-		b.deleteUser(this.defaultName, this.defaultLastName);
-		Assert.assertEquals(0, b.getNumberOfUser());
+		emptyBank.addUser(this.defaultName, this.defaultLastName, this.defaultAge, this.defaultString, this.defaultPhone);
+		emptyBank.deleteUser(this.defaultName, this.defaultLastName);
+		Assert.assertEquals(0, emptyBank.getNumberOfUser());
 	}
 	
 	@Test
@@ -59,8 +59,8 @@ public class BankTest {
 		String name = "Jean-Luc";
 		String lastName = "Amitousa";
 		
-		b.addUser(name, lastName, this.defaultAge, this.defaultString, this.defaultPhone);
-		u = b.findUser(name, lastName);
+		emptyBank.addUser(name, lastName, this.defaultAge, this.defaultString, this.defaultPhone);
+		u = emptyBank.findUser(name, lastName);
 		
 		Assert.assertEquals(name, u.getName());
 		Assert.assertEquals(lastName, u.getLastName());
@@ -76,8 +76,8 @@ public class BankTest {
 		String name = "David";
 		String lastName = "DuLac";
 		
-		b.addUser(name, lastName, this.defaultAge, this.defaultString, this.defaultPhone);
-		u = b.findUser(name, lastName);
+		emptyBank.addUser(name, lastName, this.defaultAge, this.defaultString, this.defaultPhone);
+		u = emptyBank.findUser(name, lastName);
 		
 		Assert.assertEquals(name, u.getName());
 		Assert.assertEquals(lastName, u.getLastName());
@@ -93,9 +93,9 @@ public class BankTest {
 		String name = "Jean-Luc";
 		String lastName = "Amitousa";
 		
-		b.addUser(name, lastName, this.defaultAge, this.defaultString, this.defaultPhone);
-		b.deleteUser(name, lastName);
-		u = b.findUser(name, lastName);
+		emptyBank.addUser(name, lastName, this.defaultAge, this.defaultString, this.defaultPhone);
+		emptyBank.deleteUser(name, lastName);
+		u = emptyBank.findUser(name, lastName);
 		
 		Assert.assertEquals(null, u);
 	}
@@ -109,11 +109,11 @@ public class BankTest {
 		String lastName2 = "DuLac";
 		User u = null;
 		
-		b.addUser(name1, lastName1, this.defaultAge, this.defaultString, this.defaultPhone);
-		b.addUser(name2, lastName2, this.defaultAge, this.defaultString, this.defaultPhone);
-		b.deleteUser(name2, lastName2);
+		emptyBank.addUser(name1, lastName1, this.defaultAge, this.defaultString, this.defaultPhone);
+		emptyBank.addUser(name2, lastName2, this.defaultAge, this.defaultString, this.defaultPhone);
+		emptyBank.deleteUser(name2, lastName2);
 		
-		u = b.findUser(name1, lastName1);
+		u = emptyBank.findUser(name1, lastName1);
 		
 		Assert.assertEquals(name1, u.getName());
 		Assert.assertEquals(lastName1, u.getLastName());
@@ -132,17 +132,17 @@ public class BankTest {
 		String newAdrDesc = "Loin dans l'espace";
 		String newPhone = "0706050403";
 		
-		b.addUser(
+		emptyBank.addUser(
 				this.defaultName, 
 				this.defaultLastName, 
 				this.defaultAge, this.defaultString, this.defaultPhone);
 		
-		b.updateUserInfos(
+		emptyBank.updateUserInfos(
 				this.defaultName, 
 				this.defaultLastName, 
 				newName, newLastName, newAge, newAdrDesc, newPhone);
 		
-		u = b.findUser(newName, newLastName);
+		u = emptyBank.findUser(newName, newLastName);
 		
 		Assert.assertEquals(newName, u.getName());
 		Assert.assertEquals(newLastName, u.getLastName());
@@ -153,23 +153,23 @@ public class BankTest {
 	
 	@Test 
 	public void addNewAccountToUser() throws NeoLynkBankException {
-		b.addUser(
+		emptyBank.addUser(
 				this.defaultName, 
 				this.defaultLastName, 
 				this.defaultAge, this.defaultString, this.defaultPhone);
-		b.addNewAccount(this.defaultName, this.defaultLastName);
-		Assert.assertEquals(1, b.getAccountCountByUser(this.defaultName, this.defaultLastName));
+		emptyBank.addNewAccount(this.defaultName, this.defaultLastName);
+		Assert.assertEquals(1, emptyBank.getAccountCountByUser(this.defaultName, this.defaultLastName));
 	}
 	
 	@Test
-	public void checkGlobalAccountCountAfterDelete() {
+	public void checkGlobalAccountCountAfterDelete() throws NeoLynkBankException {
 		bankWithUser.addNewAccount(this.defaultName, this.defaultLastName);
 		bankWithUser.deleteUser(this.defaultName, this.defaultLastName);
 		Assert.assertEquals(0, bankWithUser.getTotalAccountCount());
 	}
 	
 	@Test
-	public void checkUserAccountCountAfterDelete() {
+	public void checkUserAccountCountAfterDelete() throws NeoLynkBankException {
 		bankWithUser.addNewAccount(this.defaultName, this.defaultLastName);
 		bankWithUser.deleteUser(this.defaultName, this.defaultLastName);
 		Assert.assertEquals(0, bankWithUser.getAccountCountByUser(this.defaultName, this.defaultLastName));
@@ -219,7 +219,7 @@ public class BankTest {
 	public void invalidUserNotAdded() {
 		
 		try {
-			b.addUser(
+			emptyBank.addUser(
 					null, 
 					this.defaultLastName, 
 					this.defaultAge, this.defaultString, this.defaultPhone);
@@ -227,16 +227,21 @@ public class BankTest {
 			//In order to avoid ambiguity in ouput, we don't log this exception.
 		}
 
-		Assert.assertTrue(b.getNumberOfUser()==0);
+		Assert.assertTrue(emptyBank.getNumberOfUser()==0);
 	}
 	
 	@Test(expected=NeoLynkBankException.class)
 	public void addMoneyToNonExistingUserIsKO() throws NeoLynkBankException {
-		b.deposite(this.defaultName, this.defaultLastName, 50);
+		emptyBank.deposite(this.defaultName, this.defaultLastName, 50);
 	}
 	
 	@Test(expected=NeoLynkBankException.class)
 	public void takeMoneyToNonExistingUserIsKO() throws NeoLynkBankException {
-		b.withdraw(this.defaultName, this.defaultLastName, 50);
+		emptyBank.withdraw(this.defaultName, this.defaultLastName, 50);
+	}
+	
+	@Test(expected=NeoLynkBankException.class)
+	public void addAccountToNonExistingUserIsKO() throws NeoLynkBankException {
+		emptyBank.addNewAccount(this.defaultName, this.defaultLastName);
 	}
 }
