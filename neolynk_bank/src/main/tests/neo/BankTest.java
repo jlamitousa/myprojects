@@ -234,4 +234,9 @@ public class BankTest {
 	public void addMoneyToNonExistingUserIsKO() throws NeoLynkBankException {
 		b.deposite(this.defaultName, this.defaultLastName, 50);
 	}
+	
+	@Test(expected=NeoLynkBankException.class)
+	public void takeMoneyToNonExistingUserIsKO() throws NeoLynkBankException {
+		b.withdraw(this.defaultName, this.defaultLastName, 50);
+	}
 }
