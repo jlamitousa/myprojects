@@ -193,14 +193,14 @@ public class BankTest {
 	}
 	
 	@Test
-	public void checkMoneyDeposite() {
+	public void checkMoneyDeposite() throws NeoLynkBankException {
 		bankWithUser.addNewAccount(this.defaultName, this.defaultLastName);
 		bankWithUser.deposite(this.defaultName, this.defaultLastName, 20);
 		Assert.assertEquals(20, bankWithUser.getAmountByUser(this.defaultName, this.defaultLastName));
 	}
 	
 	@Test
-	public void checkMoneyWithdraw() {
+	public void checkMoneyWithdraw() throws NeoLynkBankException {
 		bankWithUser.addNewAccount(this.defaultName, this.defaultLastName);
 		bankWithUser.deposite(this.defaultName, this.defaultLastName, 20);
 		bankWithUser.withdraw(this.defaultName, this.defaultLastName, 20);
@@ -228,5 +228,10 @@ public class BankTest {
 		}
 
 		Assert.assertTrue(b.getNumberOfUser()==0);
+	}
+	
+	@Test(expected=NeoLynkBankException.class)
+	public void addMoneyToNonExistingUserIsKO() throws NeoLynkBankException {
+		b.deposite(this.defaultName, this.defaultLastName, 50);
 	}
 }

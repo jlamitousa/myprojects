@@ -96,11 +96,16 @@ public class Bank {
 		return total;
 	}
 
-	public void deposite(String userName, String userLastName, int amount) {
+	public void deposite(String userName, String userLastName, int amount) throws NeoLynkBankException {
 		
 		User u = findUser(userName, userLastName);
-		Account a = this.accounts.get(u).get(0);
+		Account a = null;
 		
+		if(u==null) {
+			throw new NeoLynkBankException("Invalid user");
+		}
+		
+		a = this.accounts.get(u).get(0);
 		a.setBalance(a.getBalance()+amount);
 	}
 	
