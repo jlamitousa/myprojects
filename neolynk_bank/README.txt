@@ -1,3 +1,7 @@
+About me: Linkedin (Jean-Luc AMITOUSA MANKOY)
+
+Objectif: This is a test-project for a job. The project had to use TDD paradigm.s
+
 Instructions in command line:
 
 	1 - Build: 'maven clean package' from here.
