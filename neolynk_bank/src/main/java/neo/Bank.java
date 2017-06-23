@@ -129,6 +129,11 @@ public class Bank {
 		}
 		
 		a = this.accounts.get(u).get(0);
+		
+		if((a.getBalance()-amount) < 0) {
+			throw new NeoLynkBankException("Impossible Operation. Dude holidays are finish ... Return to work ...");
+		}
+		
 		a.setBalance(a.getBalance()-amount);
 	}
 

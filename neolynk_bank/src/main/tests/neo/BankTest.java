@@ -257,6 +257,11 @@ public class BankTest {
 	public void addMoreMoneyThenPossibleIsKO() throws NeoLynkBankException {
 		bankWithUserAndAccount.deposite(this.defaultName, this.defaultLastName, Integer.MAX_VALUE);
 		bankWithUserAndAccount.deposite(this.defaultName, this.defaultLastName, 1);
-		
+	}
+	
+	@Test(expected=NeoLynkBankException.class)
+	public void withdrawMoreMoneyThenPossibleIsKO() throws NeoLynkBankException {
+		bankWithUserAndAccount.deposite(this.defaultName, this.defaultLastName, 10);
+		bankWithUserAndAccount.withdraw(this.defaultName, this.defaultLastName, 20);
 	}
 }
