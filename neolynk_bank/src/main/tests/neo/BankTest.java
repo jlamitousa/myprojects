@@ -194,8 +194,17 @@ public class BankTest {
 	
 	@Test
 	public void checkMoneyDeposite() {
+		bankWithUser.addNewAccount(this.defaultName, this.defaultLastName);
 		bankWithUser.deposite(this.defaultName, this.defaultLastName, 20);
 		Assert.assertEquals(20, bankWithUser.getAmountByUser(this.defaultName, this.defaultLastName));
+	}
+	
+	@Test
+	public void checkMoneyWithdraw() {
+		bankWithUser.addNewAccount(this.defaultName, this.defaultLastName);
+		bankWithUser.deposite(this.defaultName, this.defaultLastName, 20);
+		bankWithUser.withdraw(this.defaultName, this.defaultLastName, 20);
+		Assert.assertEquals(0, bankWithUser.getAmountByUser(this.defaultName, this.defaultLastName));
 	}
 	
 	

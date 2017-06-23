@@ -97,9 +97,30 @@ public class Bank {
 	}
 
 	public void deposite(String userName, String userLastName, int amount) {
+		
+		User u = findUser(userName, userLastName);
+		Account a = this.accounts.get(u).get(0);
+		
+		a.setBalance(a.getBalance()+amount);
+	}
+	
+	public void withdraw(String userName, String userLastName, int amount) {
+		
+		User u = findUser(userName, userLastName);
+		Account a = this.accounts.get(u).get(0);
+		
+		a.setBalance(a.getBalance()-amount);
 	}
 
-	public int getAmountByUser(String defaultName, String defaultLastName) {
-		return 20;
+	public int getAmountByUser(String name, String lastName) {
+		
+		User u = findUser(name, lastName);
+		int total = 0;
+		
+		for(Account a : this.accounts.get(u)) {
+			total += a.getBalance();
+		}
+		
+		return total;
 	}
 }
