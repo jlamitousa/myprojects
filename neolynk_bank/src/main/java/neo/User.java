@@ -14,6 +14,15 @@ public class User {
 	private String adresseDescription;
 	private String phone;
 	
+	/**
+	 * 
+	 * @param userName never null or empty (throw exception)
+	 * @param userLastName never null or empty (throw exception)
+	 * @param userAge never negative  (throw exception)
+	 * @param adresseDescription
+	 * @param phone number only (throw exception)
+	 * @throws NeoLynkBankException
+	 */
 	public User(String userName, String userLastName, int userAge, String adresseDescription, String phone) throws NeoLynkBankException {
 		
 		if(StringUtils.isEmpty(userName)) {

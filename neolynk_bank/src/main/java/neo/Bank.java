@@ -19,6 +19,7 @@ public class Bank {
 	}
 	
 	
+
 	public int getNumberOfUser() {
 		return this.users.size();
 	}
@@ -39,6 +40,12 @@ public class Bank {
 		this.accounts.remove(u);
 	}
 	
+	/**
+	 * 
+	 * @param name
+	 * @param lastName
+	 * @return The user if found. null otherwise
+	 */
 	public User findUser(String name, String lastName) {
 		
 		User u = null;
@@ -71,6 +78,12 @@ public class Bank {
 		return true;
 	}
 
+	/**
+	 * Error if user does not exists
+	 * @param userName
+	 * @param userLastName
+	 * @throws NeoLynkBankException
+	 */
 	public void addNewAccount(String userName, String userLastName) throws NeoLynkBankException {
 		
 		User u = findUser(userName, userLastName);
@@ -101,6 +114,13 @@ public class Bank {
 		return total;
 	}
 
+	/**
+	 * Error if user does not exists or you have to fill your account
+	 * @param userName
+	 * @param userLastName
+	 * @param amount
+	 * @throws NeoLynkBankException
+	 */
 	public void deposite(String userName, String userLastName, int amount) throws NeoLynkBankException {
 		
 		User u = findUser(userName, userLastName);
@@ -119,6 +139,13 @@ public class Bank {
 		a.setBalance(a.getBalance()+amount);
 	}
 	
+	/**
+	 * Error if user does not exists or you have not enough money
+	 * @param userName
+	 * @param userLastName
+	 * @param amount
+	 * @throws NeoLynkBankException
+	 */
 	public void withdraw(String userName, String userLastName, int amount) throws NeoLynkBankException {
 		
 		User u = findUser(userName, userLastName);

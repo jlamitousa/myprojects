@@ -16,6 +16,11 @@ public class Account {
 		return this.creationDate;
 	}
 
+	/**
+	 * 
+	 * @param newDate Cannot be null (throw exception).
+	 * @throws NeoLynkBankException
+	 */
 	public void setDateCreation(Date newDate) throws NeoLynkBankException {
 		
 		if(newDate==null) {
