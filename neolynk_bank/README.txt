@@ -1,6 +1,6 @@
 About me: Linkedin (Jean-Luc AMITOUSA MANKOY)
 
-Objectif: This is a test-project for a job. The project had to use TDD paradigm.s
+Goal: This is a test-project for a job. The project had to use TDD paradigm.s
 
 Instructions in command line:
 
